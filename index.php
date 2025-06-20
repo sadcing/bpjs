@@ -27,7 +27,7 @@ $tanggal = date('m-Y', strtotime($tanggal_raw));
     }
 
     // Convert to PDF using LibreOffice
-    $cmd = "libreoffice --headless --convert-to pdf $docxPath --outdir .";
+    $cmd = "HOME=/tmp libreoffice --headless --convert-to pdf $docxPath --outdir .";
     exec($cmd);
 
     // Output PDF to user
