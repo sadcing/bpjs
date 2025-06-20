@@ -27,8 +27,16 @@ $tanggal = date('m-Y', strtotime($tanggal_raw));
     }
 
     // Convert to PDF using LibreOffice
-    $cmd = "HOME=/tmp libreoffice --headless --convert-to pdf $docxPath --outdir .";
-    exec($cmd);
+    $docxSafe = escapeshellarg($docxPath);
+$cmd = "HOME=/tmp libreoffice --headless --convert-to pdf $docxSafe --outdir . 2>&1";
+$output = [];
+exec($cmd, $output);
+
+if (!file_exists($pdfPath)) {
+    echo "<h3 style='color:red;'>Gagal generate PDF!</h3>";
+    echo "<pre>" . implode("\n", $output) . "</pre>";
+    exit;
+}
 
     // Output PDF to user
     header('Content-Type: application/pdf');
