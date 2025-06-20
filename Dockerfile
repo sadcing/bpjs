@@ -1,15 +1,16 @@
 FROM php:8.2-apache
 
-# Install LibreOffice & unzip (buat edit .docx)
+# 🔧 Install libreoffice, unzip, DAN PHP zip extension
 RUN apt-get update && \
-    apt-get install -y libreoffice libreoffice-writer unzip && \
-    apt-get clean
+    apt-get install -y \
+    libreoffice \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install zip \
+    && apt-get clean
 
-# Aktifin mod_rewrite (kalau nanti lo butuh .htaccess)
 RUN a2enmod rewrite
 
-# Copy project ke container
+# Copy file lo ke folder Apache
 COPY . /var/www/html/
-
-# Set working directory
 WORKDIR /var/www/html/
