@@ -1,9 +1,10 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ktp = $_POST['no_ktp'];
-    $bpjs = $_POST['no_bpjs'];
-    $nama = $_POST['nama'];
-    $tanggal = $_POST['tanggal'];
+$ktp = $_POST['no_ktp'];
+$bpjs = $_POST['no_bpjs'];
+$nama = $_POST['nama'];
+$tanggal_raw = $_POST['tanggal'];
+$tanggal = date('m-Y', strtotime($tanggal_raw));
 
     $docxPath = 'filled_' . time() . '.docx';
     $pdfPath = 'output_' . time() . '.pdf';
@@ -40,5 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-
-<a href="form.html">Kembali ke Form</a>

@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
+  <meta charset="UTF-8">
+  <title>Form Data BPJS</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form action="index.php" method="POST">
-  <input type="text" name="no_ktp" placeholder="Nomor KTP" required><br>
-  <input type="text" name="no_bpjs" placeholder="Nomor BPJS" required><br>
-  <input type="text" name="nama" placeholder="Nama" required><br>
-  <input type="date" name="tanggal" required><br>
-  <button type="submit">Generate PDF</button>
-</form>
+
+  <form action="index.php" method="POST">
+    <h2>Form Data BPJS</h2>
+
+    <label for="no_ktp">No. KTP</label>
+    <input type="text" id="no_ktp" name="no_ktp" required>
+
+    <label for="no_bpjs">No. BPJS</label>
+    <input type="text" id="no_bpjs" name="no_bpjs" required>
+
+    <label for="nama">Nama</label>
+    <input type="text" id="nama" name="nama" required>
+
+    <label for="tanggal">Tanggal</label>
+    <input type="date" id="tanggal" name="tanggal" required>
+
+    <button type="submit">Generate PDF</button>
+  </form>
+
 </body>
 </html>
